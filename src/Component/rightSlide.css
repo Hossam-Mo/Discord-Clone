@@ -1,0 +1,262 @@
+.rightslide {
+  display: flex;
+  flex: 1;
+}
+.rightslide_left {
+  flex: 0.275;
+  background-color: rgb(47, 49, 54);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left_nav {
+  margin: 0px 12px;
+  padding: 12px 5px;
+
+  height: 28px;
+  border-bottom: 2px solid rgb(37, 39, 42);
+  width: 95%;
+}
+.leftNav_input {
+  width: 91%;
+  background-color: rgb(32, 34, 37);
+  padding: 7px;
+  color: rgb(114, 118, 125);
+  border: none;
+  border-radius: 4px;
+  outline: none;
+}
+.left_friends {
+  display: flex;
+  align-items: center;
+  background-color: rgb(57, 60, 67);
+  margin: 10px;
+  border-radius: 13px;
+  width: 90%;
+}
+.friends_friendIcon {
+  height: 1.8rem;
+  width: 1.8rem;
+  color: white;
+  padding: 10px;
+  margin-left: 10px;
+}
+.friends_firends {
+  color: white;
+  font-size: 17px;
+  margin-left: 4px;
+}
+
+.left_messages {
+  color: rgb(151, 151, 151);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.left_add {
+  color: #a5a5a5;
+  height: 1.2rem;
+  width: 1.2rem;
+  margin: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.left_messages > p {
+  margin: 20px;
+  font-size: 12px;
+  margin-top: 10px;
+  font-weight: 500;
+}
+.left_dMessages {
+  width: 90%;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+  flex: 1;
+}
+.left_dmessages::-webkit-scrollbar {
+  display: none;
+}
+.messages {
+  display: flex;
+  align-items: center;
+
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 7px;
+  width: 95%;
+  margin-bottom: 3px;
+}
+.messages:hover {
+  background-color: rgb(52, 55, 60);
+}
+.messages:hover > .messages_close {
+  display: unset;
+}
+.messages > h4 {
+  color: rgb(172, 172, 172);
+  padding: 0 15px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.messages > img {
+  height: 33px;
+  object-fit: contain;
+}
+.messages_close {
+  height: 1.2rem;
+  width: 1.2rem;
+  margin-left: auto;
+  color: rgb(157, 159, 162);
+  cursor: pointer;
+  display: none;
+}
+.messages_close:hover {
+  color: rgb(208, 211, 214);
+}
+.rightslide_right {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  flex: 1;
+}
+
+.right_nav {
+  background-color: rgb(54, 57, 63);
+  padding: 12px;
+  color: rgb(220, 221, 222);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 2px 2px 0px rgb(45, 48, 53);
+  border-bottom: 2px solid rgb(45, 48, 53);
+  height: 28px;
+}
+.nav_left > p {
+  padding: 2px 10px;
+  margin: 0px 10px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.nav_left > p:hover {
+  background-color: rgb(58, 62, 68);
+  border-radius: 3px;
+}
+.nav_left > hr {
+  border: 1px solid rgb(66, 69, 74);
+  height: 20px;
+}
+.nav_friendIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: rgb(114, 118, 125);
+}
+.nav_left > .nav_firends {
+  color: white;
+  margin-left: 0;
+}
+.nav_addfirends {
+  color: white;
+  background-color: rgba(67, 181, 129);
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 2px 10px;
+  margin: 0px 10px;
+  font-size: 15px;
+}
+.nav_addfirends:hover {
+  background-color: #38524c;
+  color: #43b581;
+}
+.nav_left {
+  display: flex;
+  align-items: center;
+}
+
+.nav_right {
+  display: flex;
+  align-items: center;
+}
+
+.nav_right > hr {
+  height: 20px;
+  border: 1px solid rgb(66, 69, 74);
+}
+
+.nav_leftIcon {
+  padding: 0 10px;
+  height: 1.3em;
+  width: 1.3em;
+  cursor: pointer;
+  color: rgb(220, 221, 222);
+}
+.nav_leftIconMessage {
+  padding: 0 10px;
+  margin: 0 10px;
+  height: 1.4em;
+  width: 1.4em;
+  cursor: pointer;
+  color: rgb(220, 221, 222);
+}
+.nav_leftIconQmark {
+  padding: 0 10px;
+  height: 1.3em;
+  width: 1.3em;
+  cursor: pointer;
+  color: rgb(67, 181, 129);
+}
+
+.right_body {
+  display: flex;
+  background-color: rgb(54, 57, 63);
+  flex: 1;
+}
+.body_left {
+  flex: 0.75;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.body_img {
+  display: block;
+  margin-bottom: 30px;
+}
+.body_left > p {
+  color: rgb(114, 118, 125);
+}
+
+.body_right {
+  flex: 0.25;
+
+  background-color: rgb(47, 49, 54);
+}
+.body_right > h4 {
+  padding: 15px;
+  color: rgb(185, 187, 190);
+  font-size: 12px;
+}
+.body_qu {
+  background-color: rgb(54, 57, 63);
+  padding: 15px;
+  margin: 0 20px;
+  border-radius: 8px;
+}
+.body_qu > h4 {
+  text-align: center;
+  color: white;
+  font-size: 17px;
+  font-weight: 500;
+  padding: 7px;
+}
+.body_qu > p {
+  color: rgb(185, 187, 190);
+  text-align: center;
+  font-size: 14px;
+  font-family: "Whitney SSm A" sans-serif;
+}

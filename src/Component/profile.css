@@ -1,0 +1,43 @@
+.profile {
+  width: 100%;
+  background-color: rgb(40, 41, 46);
+  padding: 10px 0px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.profile_info {
+  display: flex;
+  align-items: center;
+}
+.profile_img {
+  height: 35px;
+  object-fit: contain;
+  margin: 0 10px;
+}
+.profile_user > p {
+  color: rgb(185, 187, 190);
+  font-size: 12px;
+}
+.profile_user > h4 {
+  color: white;
+  font-size: 14px;
+}
+.micIcon {
+  color: white;
+  height: 1.2rem;
+}
+.profile_icons > .MuiIconButton-root {
+  padding: 7px;
+}
+.icons {
+  height: 1.4rem;
+  color: white;
+}
+.profile_icons {
+  display: flex;
+  align-items: center;
+}

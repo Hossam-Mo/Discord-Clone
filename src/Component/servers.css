@@ -1,0 +1,351 @@
+.servers {
+  display: flex;
+  flex: 1;
+  max-height: 100vh;
+}
+.servers_left {
+  flex: 0.275;
+  background-color: rgb(47, 49, 54);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100vh;
+}
+
+.left_nav {
+  margin: 0px 12px;
+  padding: 12px 5px;
+
+  height: 28px;
+  border-bottom: 2px solid rgb(37, 39, 42);
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+.left_nav > h4 {
+  margin-left: 10px;
+  font-family: Lobster;
+  font-weight: lighter;
+}
+.left_nav:hover {
+  background-color: #34373c;
+}
+.left_nav > .leftNav_icon {
+  margin-right: 10px;
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.left_messages {
+  color: rgb(151, 151, 151);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.left_messButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 50%;
+  margin: 0;
+  padding: 0;
+  height: 30px;
+  outline: none;
+  border: none;
+}
+.left_add {
+  color: #a5a5a5;
+  height: 1.2rem;
+  width: 1.2rem;
+  margin: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.left_add:hover {
+  color: #d3d4d5;
+}
+.left_messages > p {
+  margin: 20px;
+  font-size: 12px;
+  margin-top: 10px;
+  font-weight: 500;
+}
+
+.left_dMessages1 {
+  overflow-y: scroll;
+  width: 90%;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  max-height: 35vh;
+}
+.left_dMessages1::-webkit-scrollbar {
+  display: none;
+}
+
+.messages {
+  display: flex;
+  align-items: center;
+
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 7px;
+  width: 95%;
+  margin-bottom: 3px;
+}
+.messages:hover {
+  background-color: rgb(52, 55, 60);
+}
+.messages:hover > .messages_close {
+  display: unset;
+}
+.messages > h4 {
+  color: rgb(172, 172, 172);
+  padding: 0 15px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.messages > img {
+  height: 33px;
+  object-fit: contain;
+}
+.messages_close {
+  height: 1.2rem;
+  width: 1.2rem;
+  margin-left: auto;
+  color: rgb(157, 159, 162);
+  cursor: pointer;
+  display: none;
+}
+.messages_close:hover {
+  color: rgb(208, 211, 214);
+}
+.servers_right {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  flex: 1;
+}
+
+.right_nav {
+  background-color: rgb(54, 57, 63);
+  padding: 12px;
+  color: rgb(220, 221, 222);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 2px 2px 0px rgb(45, 48, 53);
+  border-bottom: 2px solid rgb(45, 48, 53);
+  height: 28px;
+}
+.nav_left > h4 {
+  cursor: unset;
+
+  color: #fff9f9;
+  font-family: serif;
+}
+
+.nav_left > h1 {
+  margin: 10px;
+  font-weight: 400;
+  color: #72767d;
+  cursor: unset;
+}
+
+.nav_left {
+  display: flex;
+  align-items: center;
+}
+
+.nav_right {
+  display: flex;
+  align-items: center;
+}
+
+.nav_right > hr {
+  height: 20px;
+  border: 1px solid rgb(66, 69, 74);
+  margin: 10px;
+}
+
+.nav_leftIcon {
+  padding: 0 10px;
+  height: 1.3em;
+  width: 1.3em;
+  cursor: pointer;
+  color: rgb(220, 221, 222);
+}
+.nav_leftIcons {
+  margin: 0 10px;
+  height: 1.4em;
+  width: 1.4em;
+  cursor: pointer;
+  color: rgb(220, 221, 222);
+}
+.nav_leftIconQmark {
+  padding: 0 10px;
+  height: 1.3em;
+  width: 1.3em;
+  cursor: pointer;
+  color: rgb(67, 181, 129);
+}
+
+.right_body {
+  display: flex;
+  background-color: rgb(54, 57, 63);
+  flex: 1;
+  height: 90vh;
+}
+.body_left {
+  flex: 0.75;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.body_img {
+  display: block;
+  margin-bottom: 30px;
+  margin-top: 100px;
+}
+.left_up {
+  display: flex;
+  flex-direction: column;
+  color: rgba(32, 34, 37, 0);
+  align-items: center;
+  flex: 1;
+  width: 100%;
+  overflow-y: scroll;
+  transition: all 0.5s ease-in-out;
+}
+.left_up::-webkit-scrollbar {
+  width: 7px;
+}
+.left_up::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: rgb(46, 51, 56);
+}
+
+.left_up::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 0 10px;
+}
+
+.left_up:hover {
+  color: rgba(32, 34, 37, 1);
+}
+.left_up > p {
+  color: rgb(114, 118, 125);
+}
+.left_down {
+  width: 100%;
+  flex: 0.1;
+}
+.down_input {
+  width: 90%;
+  margin: 20px;
+  background-color: #40444b;
+  border-radius: 15px;
+  display: flex;
+}
+.down_input > input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  flex: 1;
+  padding: 10px;
+  margin: 10px;
+  color: #c3c3c4;
+}
+.down_input > .MuiIconButton-root {
+  color: rgb(149, 152, 161);
+}
+.body_right {
+  flex: 0.25;
+
+  background-color: rgb(47, 49, 54);
+}
+.body_right > h4 {
+  padding: 15px;
+  color: rgb(185, 187, 190);
+  font-size: 10px;
+}
+.rightBody_users {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.rightBody_users > img {
+  height: 33px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+.rightBody_users > h5 {
+  color: #8e9297;
+  font-family: serif;
+  font-size: 15px;
+}
+.rightBody_users:hover {
+  background-color: #34373c;
+}
+.rightBody_users:hover > h5 {
+  color: white;
+}
+.rightBody_users1 {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  opacity: 0.4;
+  cursor: pointer;
+}
+.rightBody_users1 > img {
+  height: 33px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+.rightBody_users1 > h5 {
+  color: #8e9297;
+  font-family: serif;
+  font-size: 15px;
+}
+.rightBody_users1:hover {
+  background-color: #34373c;
+  opacity: 1;
+}
+.rightBody_users1:hover > h5 {
+  color: white;
+}
+
+.body_messages {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font-family: serif;
+}
+.body_messages:hover {
+  background-color: #32353b;
+}
+.body_messages > img {
+  height: 40px;
+  object-fit: contain;
+  padding: 10px 20px;
+}
+
+.body_messages > div > h4 {
+  color: #fffff3;
+}
+.body_messages > div > p {
+  color: #bbc3d4;
+}
