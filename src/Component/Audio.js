@@ -79,6 +79,8 @@ export default function Audio() {
       });
     });
 
+    console.log(peer);
+
     return peer;
   }
 
@@ -104,6 +106,19 @@ export default function Audio() {
       {peers.map((peer, index) => {
         return <Video key={index} peer={peer} />;
       })}
+
+      <button
+        onClick={() => {
+          console.log(peers);
+
+          peers.forEach((peer) => {
+            peer.destroy();
+          });
+          socketRef.current.emit("userDisconnect");
+        }}
+      >
+        Close
+      </button>
     </div>
   );
 }

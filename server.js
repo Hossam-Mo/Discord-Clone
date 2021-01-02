@@ -50,6 +50,7 @@ io.on("connection", (socket) => {
         socket.emit("room full");
         return;
       }
+      socket.join(roomID);
       users[roomID].push(socket.id);
     } else {
       users[roomID] = [socket.id];
@@ -77,6 +78,15 @@ io.on("connection", (socket) => {
   socket.on("dis", (serverid) => {
     socket.leave(serverid);
   });
+  socket.on("userDisconnect", () => {
+    const roomID = socketToRoom[socket.id];
+    let room = users[roomID];
+    if (room) {
+      room = room.filter((id) => id !== socket.id);
+      users[roomID] = room;
+    }
+  });
+
   socket.on("disconnect", () => {
     const roomID = socketToRoom[socket.id];
     let room = users[roomID];
