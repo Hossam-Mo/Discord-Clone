@@ -36,7 +36,6 @@ function App() {
         <Switch>
           <Route path="/:serverid/VoiseChat">
             <Audio></Audio>
-
             <LeftSlide socket={socket}></LeftSlide>
             <Servers socket={socket}></Servers>
           </Route>
