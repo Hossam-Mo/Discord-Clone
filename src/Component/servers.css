@@ -87,6 +87,7 @@ a {
   outline: none;
   position: relative;
   margin: auto;
+  transition: all 0.2s ease-in-out;
 }
 .left_generalChat > p {
   padding: 10px;
