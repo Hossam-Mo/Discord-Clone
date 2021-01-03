@@ -5,7 +5,7 @@
   width: 100vw;
   height: 100vh;
   background-color: white;
-
+  z-index: -1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }

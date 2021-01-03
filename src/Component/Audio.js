@@ -28,7 +28,7 @@ export default function Audio() {
   useEffect(() => {
     socketRef.current = io.connect("http://localhost:5000/");
     navigator.mediaDevices
-      .getUserMedia({ video: true, audio: true })
+      .getUserMedia({ video: false, audio: true })
       .then((stream) => {
         userVideo.current.srcObject = stream;
         socketRef.current.emit("join room", roomID.serverid);

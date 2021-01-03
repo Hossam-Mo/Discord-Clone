@@ -3,6 +3,10 @@
   flex: 1;
   max-height: 100vh;
 }
+a {
+  width: 100%;
+  text-decoration: none;
+}
 .servers_left {
   flex: 0.275;
   background-color: rgb(47, 49, 54);
@@ -69,6 +73,40 @@
 }
 .left_add:hover {
   color: #d3d4d5;
+}
+.left_generalChat {
+  width: 90%;
+  background-color: transparent;
+  border: none;
+  text-align: start;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: serif;
+  border-radius: 5px;
+  outline: none;
+  position: relative;
+  margin: auto;
+}
+.left_generalChat > p {
+  padding: 10px;
+  color: white;
+  font-size: 17px;
+}
+.left_generalChat > h3 {
+  font-size: 25px;
+  margin-left: 15px;
+  color: #72767d;
+  font-weight: 900;
+}
+.left_generalChat:hover {
+  background-color: #393c43;
+}
+.left_generlIcon {
+  margin-left: 15px;
+  height: 1.5em;
+  width: 1.5em;
+  color: #72767d;
 }
 .left_messages > p {
   margin: 20px;

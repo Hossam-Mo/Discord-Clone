@@ -8,6 +8,7 @@ import { RiAddFill } from "react-icons/ri";
 import { IoNotificationsSharp } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { AiOutlineSend } from "react-icons/ai";
+import { AiFillSound } from "react-icons/ai";
 
 import Profile from "./Profile";
 import { IconButton } from "@material-ui/core";
@@ -139,34 +140,43 @@ export default function Servers({ socket }) {
             <RiAddFill className="left_add"></RiAddFill>
           </button>
         </div>
+        <Link to={`/${sid.serverid}`}>
+          <button
+            className="left_generalChat"
+            onClick={() => {
+              console.log(peers, peerSocket);
+              if (peers !== [])
+                peers.forEach((peer) => {
+                  peer.destroy();
+                });
+              if (peerSocket !== {}) peerSocket.emit("userDisconnect");
+            }}
+          >
+            <h3>#</h3>
+            <p>general</p>
+          </button>
+        </Link>
+
         <div className="left_dMessages1"></div>
 
         <div className="left_messages">
-          <p>VOICE CHANNELS</p>
-          <Link to={`/${sid.serverid}/VoiseChat`}>
-            {" "}
-            <button
-              className="left_messButton"
-              onClick={() => {
-                setAudio(true);
-              }}
-            >
-              <RiAddFill className="left_add"></RiAddFill>
-            </button>
-          </Link>
+          <p>VOICE CHANNELS</p>{" "}
+          <button
+            className="left_messButton"
+            onClick={() => {
+              setAudio(true);
+            }}
+          >
+            <RiAddFill className="left_add"></RiAddFill>
+          </button>
         </div>
-        <button
-          onClick={() => {
-            console.log(peers, peerSocket);
+        <Link to={`/${sid.serverid}/VoiseChat`}>
+          <button className="left_generalChat">
+            <AiFillSound className="left_generlIcon"></AiFillSound>
+            <p>General</p>
+          </button>
+        </Link>
 
-            peers.forEach((peer) => {
-              peer.destroy();
-            });
-            peerSocket.emit("userDisconnect");
-          }}
-        >
-          click me
-        </button>
         <div className="left_dMessages1"></div>
         <Profile></Profile>
       </div>
