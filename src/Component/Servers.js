@@ -15,6 +15,8 @@ import Axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
 import Audio from "./Audio";
+import { useSelector } from "react-redux";
+import { setSocketio } from "../redux";
 
 export default function Servers({ socket }) {
   const [message, setMessage] = useState("");
@@ -22,6 +24,8 @@ export default function Servers({ socket }) {
   const [messages, setMessages] = useState([]);
   const [name, setName] = useState("");
   const [audio, setAudio] = useState(false);
+  const peers = useSelector((state) => state.peerDisc);
+  const peerSocket = useSelector((state) => state.socketDisc);
 
   useEffect(() => {
     socket.emit("joinserver", sid.serverid);
@@ -151,6 +155,18 @@ export default function Servers({ socket }) {
             </button>
           </Link>
         </div>
+        <button
+          onClick={() => {
+            console.log(peers, peerSocket);
+
+            peers.forEach((peer) => {
+              peer.destroy();
+            });
+            peerSocket.emit("userDisconnect");
+          }}
+        >
+          click me
+        </button>
         <div className="left_dMessages1"></div>
         <Profile></Profile>
       </div>

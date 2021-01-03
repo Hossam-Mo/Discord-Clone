@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import io from "socket.io-client";
 import Peer from "simple-peer";
-
 import "./audio.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setPeersJs, setSocket } from "../redux";
 
 const Video = (props) => {
   const ref = useRef();
@@ -23,6 +23,7 @@ export default function Audio() {
   const userVideo = useRef();
   const peersRef = useRef([]);
   const roomID = useParams("serverid");
+  const dispatch = useDispatch();
 
   useEffect(() => {
     socketRef.current = io.connect("http://localhost:5000/");
@@ -100,6 +101,16 @@ export default function Audio() {
     return peer;
   }
 
+  useEffect(() => {
+    dispatch({
+      type: setPeersJs.type,
+      peers: peers,
+    });
+    dispatch({
+      type: setSocket.type,
+      socket: socketRef.current,
+    });
+  }, [peers]);
   return (
     <div className="audio">
       <video muted ref={userVideo} autoPlay playsInline />

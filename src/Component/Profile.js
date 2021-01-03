@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { muting, unMuting } from "../redux";
 
 export default function Profile() {
-  const mute = useSelector((state) => state);
+  const mute = useSelector((state) => state.mute);
   const dispatch = useDispatch();
 
   return (

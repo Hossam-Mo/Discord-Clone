@@ -1,8 +1,16 @@
+import { combineReducers } from "redux";
+
 export const muting = {
   type: "mute",
 };
 export const unMuting = {
   type: "unMute",
+};
+export const setPeersJs = {
+  type: "setPeers",
+};
+export const setSocket = {
+  type: "setSocket",
 };
 
 export const reduser = (state = true, action) => {
@@ -15,3 +23,30 @@ export const reduser = (state = true, action) => {
       return state;
   }
 };
+export const setpeerJs = (state = [], action) => {
+  switch (action.type) {
+    case "setPeers":
+      if (action.peers) {
+        return action.peers;
+      } else {
+        return state;
+      }
+
+    default:
+      return state;
+  }
+};
+export const setSocketio = (state = {}, action) => {
+  switch (action.type) {
+    case "setSocket":
+      return action.socket;
+    default:
+      return state;
+  }
+};
+
+export const rootReducer = combineReducers({
+  mute: reduser,
+  peerDisc: setpeerJs,
+  socketDisc: setSocketio,
+});
