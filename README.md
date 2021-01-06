@@ -1,6 +1,6 @@
 # Full stack Discord clone
 
-Coding this project just for educational purposes.
+Coding this project onlyfor educational purposes.
 
 ## What can you do
 
