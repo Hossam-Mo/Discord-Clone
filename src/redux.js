@@ -12,6 +12,9 @@ export const setPeersJs = {
 export const setSocket = {
   type: "setSocket",
 };
+export const setUser = {
+  type: "setUser",
+};
 
 export const reduser = (state = true, action) => {
   switch (action.type) {
@@ -45,8 +48,18 @@ export const setSocketio = (state = {}, action) => {
   }
 };
 
+export const setUsername = (state = null, action) => {
+  switch (action.type) {
+    case "setUser":
+      return action.user;
+    default:
+      return state;
+  }
+};
+
 export const rootReducer = combineReducers({
   mute: reduser,
   peerDisc: setpeerJs,
   socketDisc: setSocketio,
+  setUser: setUsername,
 });
