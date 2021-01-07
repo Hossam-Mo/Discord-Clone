@@ -1,7 +1,7 @@
 .login {
   height: 100vh;
   width: 100vw;
-  background-color: #3e4247;
+  background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,10 +11,11 @@
 
 .login_logo {
   position: absolute;
-  font-family: "lobster";
+  font-family: "lobster", "Yellowtail";
   color: #1c1e21;
   top: 40px;
   left: 40px;
+  font-weight: 400;
   z-index: 10;
 }
 
@@ -35,14 +36,14 @@
 .login__box > h1 {
   font-size: 30px;
   text-align: center;
-  font-family: "Lobster";
-  color: #1c1e21;
+  font-family: "Yellowtail";
+  color: white;
 }
 .login__box > p {
   font-size: 17px;
   text-align: center;
-  font-family: "Lobster";
-  color: #1c1e21;
+  font-family: "Yellowtail";
+  color: white;
 }
 .box_in {
   height: 50%;

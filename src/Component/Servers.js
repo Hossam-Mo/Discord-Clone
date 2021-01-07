@@ -14,22 +14,18 @@ import { IconButton } from "@material-ui/core";
 import Axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { setSocketio } from "../redux";
 
 export default function Servers({ socket }) {
   const [message, setMessage] = useState("");
   const sid = useParams("serverid");
   const [messages, setMessages] = useState([]);
   const [name, setName] = useState("");
-  const [audio, setAudio] = useState(false);
   const peers = useSelector((state) => state.peerDisc);
   const peerSocket = useSelector((state) => state.socketDisc);
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
     socket.emit("joinserver", sid.serverid);
-
-    console.log(sid);
   }, [sid]);
 
   const users = [
@@ -38,18 +34,21 @@ export default function Servers({ socket }) {
       img:
         "https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/discord-512.png",
       online: true,
+      id: 1,
     },
     {
       name: "user",
       img:
         "https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/discord-512.png",
       online: false,
+      id: 2,
     },
     {
       name: "user",
       img:
         "https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/discord-512.png",
       online: false,
+      id: 3,
     },
   ];
   useEffect(() => {
@@ -128,12 +127,7 @@ export default function Servers({ socket }) {
 
         <div className="left_messages">
           <p>TEXT CHANNELS</p>
-          <button
-            className="left_messButton"
-            onClick={() => {
-              setAudio(false);
-            }}
-          >
+          <button className="left_messButton" onClick={() => {}}>
             {" "}
             <RiAddFill className="left_add"></RiAddFill>
           </button>
@@ -142,12 +136,13 @@ export default function Servers({ socket }) {
           <button
             className="left_generalChat"
             onClick={() => {
-              console.log(peers, peerSocket);
               if (peers !== [])
                 peers.forEach((peer) => {
                   peer.destroy();
                 });
-              if (peerSocket !== {}) peerSocket.emit("userDisconnect");
+              if (peerSocket) {
+                peerSocket.emit("userDisconnect");
+              }
             }}
           >
             <h3>#</h3>
@@ -159,12 +154,7 @@ export default function Servers({ socket }) {
 
         <div className="left_messages">
           <p>VOICE CHANNELS</p>{" "}
-          <button
-            className="left_messButton"
-            onClick={() => {
-              setAudio(true);
-            }}
-          >
+          <button className="left_messButton" onClick={() => {}}>
             <RiAddFill className="left_add"></RiAddFill>
           </button>
         </div>
@@ -200,13 +190,13 @@ export default function Servers({ socket }) {
               <img
                 className="body_img"
                 src="https://discord.com/assets/b669713872b43ca42333264abf9c858e.svg"
-                alt="image for discord"
+                alt="discord"
               ></img>
               <p>Welcome to {name} Server</p>
               {messages.map((mess) => {
                 return (
-                  <div className="body_messages">
-                    <img src={mess.img}></img>
+                  <div key={mess._id} className="body_messages">
+                    <img src={mess.img} alt={mess.name}></img>
                     <div>
                       <h4>{mess.name}</h4>
                       <p>{mess.message}</p>
@@ -237,7 +227,7 @@ export default function Servers({ socket }) {
             {users.map((user) => {
               if (user.online === true) {
                 return (
-                  <div className="rightBody_users">
+                  <div key={user.id} className="rightBody_users">
                     <img src={user.img} alt={user.name}></img>
                     <h5>{user.name}</h5>
                   </div>
@@ -249,7 +239,7 @@ export default function Servers({ socket }) {
             {users.map((user) => {
               if (user.online === false) {
                 return (
-                  <div className="rightBody_users1">
+                  <div key={user.id} className="rightBody_users1">
                     <img src={user.img} alt={user.name}></img>
                     <h5>{user.name}</h5>
                   </div>

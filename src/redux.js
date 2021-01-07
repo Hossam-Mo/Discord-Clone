@@ -39,7 +39,7 @@ export const setpeerJs = (state = [], action) => {
       return state;
   }
 };
-export const setSocketio = (state = {}, action) => {
+export const setSocketio = (state = null, action) => {
   switch (action.type) {
     case "setSocket":
       return action.socket;

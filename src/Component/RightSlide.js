@@ -14,16 +14,19 @@ export default function RightSlide() {
       name: "user",
       img:
         "https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/discord-512.png",
+      id: 1,
     },
     {
       name: "user",
       img:
         "https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/discord-512.png",
+      id: 2,
     },
     {
       name: "user",
       img:
         "https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/discord-512.png",
+      id: 3,
     },
   ];
 
@@ -48,7 +51,7 @@ export default function RightSlide() {
         <div className="left_dMessages">
           {messages.map((it) => {
             return (
-              <div className="messages">
+              <div key={it.id} className="messages">
                 <img src={it.img} alt={it.name}></img>
                 <h4>{it.name}</h4>
                 <RiCloseLine className="messages_close"></RiCloseLine>

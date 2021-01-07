@@ -27,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    padding: 15,
     paddingBottom: 0,
     borderRadius: 5,
     outline: "none",
@@ -60,7 +59,7 @@ export default function LeftSlide({ socket }) {
     document.getElementById(chenger).style.backgroundColor = "white";
     document.getElementById(chenger).style.color = "gray";
     document.getElementById(chenger).style.borderRadius = "35%";
-  }, [chenger]);
+  }, [chenger, chenger2]);
 
   useEffect(() => {
     setSrNames(
@@ -114,9 +113,8 @@ export default function LeftSlide({ socket }) {
       <div className="leftslide_servers">
         {srNames.map((it) => {
           return (
-            <Link to={`/${it.id}`}>
+            <Link key={it.id} to={`/${it.id}`}>
               <button
-                key={it.id}
                 id={it.id}
                 onClick={() => {
                   setChenger(it.id);
@@ -164,7 +162,7 @@ export default function LeftSlide({ socket }) {
             ></input>
             <p>
               By creating a server , you agree to Discord's{" "}
-              <a> Community Guidelines</a>
+              <a href="/#"> Community Guidelines</a>
             </p>
             <div className="model_button">
               <button
