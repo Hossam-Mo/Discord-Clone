@@ -11,6 +11,7 @@ import { muting, unMuting } from "../redux";
 export default function Profile() {
   const mute = useSelector((state) => state.mute);
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   return (
     <div className="profile">
@@ -21,7 +22,7 @@ export default function Profile() {
           alt="User Icon"
         ></img>
         <div className="profile_user">
-          <h4>username </h4> <p>#8803</p>
+          <h4>{user} </h4> <p>#8803</p>
         </div>
       </div>
       <div className="profile_icons">

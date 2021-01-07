@@ -9,13 +9,10 @@ import { IoNotificationsSharp } from "react-icons/io5";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { AiOutlineSend } from "react-icons/ai";
 import { AiFillSound } from "react-icons/ai";
-
 import Profile from "./Profile";
 import { IconButton } from "@material-ui/core";
 import Axios from "axios";
 import { Link, useParams } from "react-router-dom";
-
-import Audio from "./Audio";
 import { useSelector } from "react-redux";
 import { setSocketio } from "../redux";
 
@@ -27,6 +24,7 @@ export default function Servers({ socket }) {
   const [audio, setAudio] = useState(false);
   const peers = useSelector((state) => state.peerDisc);
   const peerSocket = useSelector((state) => state.socketDisc);
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     socket.emit("joinserver", sid.serverid);
@@ -79,7 +77,7 @@ export default function Servers({ socket }) {
     e.preventDefault();
     if (message !== "") {
       Axios.post("http://localhost:5000/api/servers/messages", {
-        name: "Username",
+        name: user,
         img:
           "https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/discord-512.png",
         message: message,
@@ -93,7 +91,7 @@ export default function Servers({ socket }) {
         });
 
       socket.emit("mess", {
-        name: "Username",
+        name: user,
         img:
           "https://cdn3.iconfinder.com/data/icons/popular-services-brands-vol-2/512/discord-512.png",
         message: message,

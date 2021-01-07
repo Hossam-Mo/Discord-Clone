@@ -61,5 +61,5 @@ export const rootReducer = combineReducers({
   mute: reduser,
   peerDisc: setpeerJs,
   socketDisc: setSocketio,
-  setUser: setUsername,
+  user: setUsername,
 });

@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import "./login.css";
 import { BsPlayFill } from "react-icons/bs";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux";
 
 export default function Login() {
   const [name, setName] = useState("");
+  const dispatch = useDispatch();
 
   const open = (e) => {
     e.preventDefault();
-    console.log(name);
+    dispatch({
+      type: setUser.type,
+      user: name,
+    });
   };
   return (
     <div className="login">
