@@ -1,5 +1,5 @@
 import "./App.css";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import RightSlide from "./Component/RightSlide";
 import LeftSlide from "./Component/LeftSlide";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
@@ -12,11 +12,36 @@ import Login from "./LoginPage/Login";
 function App() {
   const socket = io.connect("http://localhost:5000/");
   const user = useSelector((state) => state.user);
+  const loading = useRef();
+  const log = useRef();
+  const main = useRef();
+  useEffect(() => {
+    setTimeout(() => {
+      loading.current.style.opacity = 0;
+      loading.current.style.display = "none";
+
+      setTimeout(() => {
+        log.current.style.opacity = 1;
+      }, 200);
+      log.current.style.display = "block";
+    }, 3000);
+  }, []);
+  useEffect(() => {
+    if (main.current) {
+      console.log(main);
+      setTimeout(() => {
+        main.current.style.display = "flex";
+        setTimeout(() => {
+          main.current.style.opacity = 1;
+        }, 100);
+      }, 50);
+    }
+  }, [user]);
 
   return (
     <Router>
       {user ? (
-        <div className="App">
+        <div className="App" ref={main}>
           <Switch>
             <Route path="/:serverid/VoiseChat">
               <LeftSlide socket={socket}></LeftSlide>
@@ -34,8 +59,17 @@ function App() {
           </Switch>
         </div>
       ) : (
-        <div className="login">
-          <Login></Login>
+        <div>
+          <div className="log" ref={log}>
+            <Login></Login>
+          </div>
+
+          <div className="login1" ref={loading}>
+            <h1>Discord</h1>
+            <div className="cer"></div>
+            <div className="cer"></div>
+            <div className="cer"></div>
+          </div>
         </div>
       )}
     </Router>

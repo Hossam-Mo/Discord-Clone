@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./servers.css";
 import { FaUserFriends } from "react-icons/fa";
 import { GoInbox } from "react-icons/go";
@@ -23,6 +23,19 @@ export default function Servers({ socket }) {
   const peers = useSelector((state) => state.peerDisc);
   const peerSocket = useSelector((state) => state.socketDisc);
   const user = useSelector((state) => state.user);
+  const loading = useRef();
+  const server = useRef();
+
+  useEffect(() => {
+    setTimeout(() => {
+      loading.current.style.display = "none";
+
+      server.current.style.display = "flex";
+      setTimeout(() => {
+        server.current.style.opacity = 1;
+      }, 100);
+    }, 2000);
+  }, []);
 
   useEffect(() => {
     socket.emit("joinserver", sid.serverid);
@@ -118,136 +131,144 @@ export default function Servers({ socket }) {
   }, [messages]);
 
   return (
-    <div className="servers">
-      <div className="servers_left">
-        <div className="left_nav">
-          <h4>{name.toUpperCase()} SERVER</h4>
-          <IoMdArrowDropdown className="leftNav_icon"></IoMdArrowDropdown>
-        </div>
-
-        <div className="left_messages">
-          <p>TEXT CHANNELS</p>
-          <button className="left_messButton" onClick={() => {}}>
-            {" "}
-            <RiAddFill className="left_add"></RiAddFill>
-          </button>
-        </div>
-        <Link to={`/${sid.serverid}`}>
-          <button
-            className="left_generalChat"
-            onClick={() => {
-              if (peers !== [])
-                peers.forEach((peer) => {
-                  peer.destroy();
-                });
-              if (peerSocket) {
-                peerSocket.emit("userDisconnect");
-              }
-            }}
-          >
-            <h3>#</h3>
-            <p>general</p>
-          </button>
-        </Link>
-
-        <div className="left_dMessages1"></div>
-
-        <div className="left_messages">
-          <p>VOICE CHANNELS</p>{" "}
-          <button className="left_messButton" onClick={() => {}}>
-            <RiAddFill className="left_add"></RiAddFill>
-          </button>
-        </div>
-        <Link to={`/${sid.serverid}/VoiseChat`}>
-          <button className="left_generalChat">
-            <AiFillSound className="left_generlIcon"></AiFillSound>
-            <p>General</p>
-          </button>
-        </Link>
-
-        <div className="left_dMessages1"></div>
-        <Profile></Profile>
-      </div>
-      <div className="servers_right">
-        <div className="right_nav">
-          <div className="nav_left">
-            <h1>#</h1>
-            <h4>general</h4>
+    <div className="main_server">
+      <div className="servers" ref={server}>
+        <div className="servers_left">
+          <div className="left_nav">
+            <h4>{name.toUpperCase()} SERVER</h4>
+            <IoMdArrowDropdown className="leftNav_icon"></IoMdArrowDropdown>
           </div>
 
-          <div className="nav_right">
-            <IoNotificationsSharp className="nav_leftIcons"></IoNotificationsSharp>
-            <VscPinned className="nav_leftIcons"></VscPinned>
-            <FaUserFriends className="nav_leftIcons"></FaUserFriends>
-            <hr></hr>
-            <GoInbox className="nav_leftIcon"></GoInbox>
-            <BsQuestionCircleFill className="nav_leftIconQmark"></BsQuestionCircleFill>
+          <div className="left_messages">
+            <p>TEXT CHANNELS</p>
+            <button className="left_messButton" onClick={() => {}}>
+              {" "}
+              <RiAddFill className="left_add"></RiAddFill>
+            </button>
           </div>
+          <Link to={`/${sid.serverid}`}>
+            <button
+              className="left_generalChat"
+              onClick={() => {
+                if (peers !== [])
+                  peers.forEach((peer) => {
+                    peer.destroy();
+                  });
+                if (peerSocket) {
+                  peerSocket.emit("userDisconnect");
+                }
+              }}
+            >
+              <h3>#</h3>
+              <p>general</p>
+            </button>
+          </Link>
+
+          <div className="left_dMessages1"></div>
+
+          <div className="left_messages">
+            <p>VOICE CHANNELS</p>{" "}
+            <button className="left_messButton" onClick={() => {}}>
+              <RiAddFill className="left_add"></RiAddFill>
+            </button>
+          </div>
+          <Link to={`/${sid.serverid}/VoiseChat`}>
+            <button className="left_generalChat">
+              <AiFillSound className="left_generlIcon"></AiFillSound>
+              <p>General</p>
+            </button>
+          </Link>
+
+          <div className="left_dMessages1"></div>
+          <Profile></Profile>
         </div>
-        <div className="right_body">
-          <div className="body_left">
-            <div id="scrolling-div" className="left_up">
-              <img
-                className="body_img"
-                src="https://discord.com/assets/b669713872b43ca42333264abf9c858e.svg"
-                alt="discord"
-              ></img>
-              <p>Welcome to {name} Server</p>
-              {messages.map((mess) => {
-                return (
-                  <div key={mess._id} className="body_messages">
-                    <img src={mess.img} alt={mess.name}></img>
-                    <div>
-                      <h4>{mess.name}</h4>
-                      <p>{mess.message}</p>
+        <div className="servers_right">
+          <div className="right_nav">
+            <div className="nav_left">
+              <h1>#</h1>
+              <h4>general</h4>
+            </div>
+
+            <div className="nav_right">
+              <IoNotificationsSharp className="nav_leftIcons"></IoNotificationsSharp>
+              <VscPinned className="nav_leftIcons"></VscPinned>
+              <FaUserFriends className="nav_leftIcons"></FaUserFriends>
+              <hr></hr>
+              <GoInbox className="nav_leftIcon"></GoInbox>
+              <BsQuestionCircleFill className="nav_leftIconQmark"></BsQuestionCircleFill>
+            </div>
+          </div>
+          <div className="right_body">
+            <div className="body_left">
+              <div id="scrolling-div" className="left_up">
+                <img
+                  className="body_img"
+                  src="https://discord.com/assets/b669713872b43ca42333264abf9c858e.svg"
+                  alt="discord"
+                ></img>
+                <p>Welcome to {name} Server</p>
+                {messages.map((mess) => {
+                  return (
+                    <div key={mess._id} className="body_messages">
+                      <img src={mess.img} alt={mess.name}></img>
+                      <div>
+                        <h4>{mess.name}</h4>
+                        <p>{mess.message}</p>
+                      </div>
                     </div>
-                  </div>
-                );
+                  );
+                })}
+              </div>
+
+              <div className="left_down">
+                <form className="down_input">
+                  <input
+                    placeholder="Enter a Message"
+                    value={message}
+                    onChange={(e) => {
+                      setMessage(e.target.value);
+                    }}
+                  ></input>
+
+                  <IconButton type="submit" onClick={send}>
+                    <AiOutlineSend></AiOutlineSend>
+                  </IconButton>
+                </form>
+              </div>
+            </div>
+            <div className="body_right">
+              <h4>ONLINE-1</h4>
+              {users.map((user) => {
+                if (user.online === true) {
+                  return (
+                    <div key={user.id} className="rightBody_users">
+                      <img src={user.img} alt={user.name}></img>
+                      <h5>{user.name}</h5>
+                    </div>
+                  );
+                }
+              })}
+              <h4>OFFLINE-1</h4>
+
+              {users.map((user) => {
+                if (user.online === false) {
+                  return (
+                    <div key={user.id} className="rightBody_users1">
+                      <img src={user.img} alt={user.name}></img>
+                      <h5>{user.name}</h5>
+                    </div>
+                  );
+                }
               })}
             </div>
-
-            <div className="left_down">
-              <form className="down_input">
-                <input
-                  placeholder="Enter a Message"
-                  value={message}
-                  onChange={(e) => {
-                    setMessage(e.target.value);
-                  }}
-                ></input>
-
-                <IconButton type="submit" onClick={send}>
-                  <AiOutlineSend></AiOutlineSend>
-                </IconButton>
-              </form>
-            </div>
-          </div>
-          <div className="body_right">
-            <h4>ONLINE-1</h4>
-            {users.map((user) => {
-              if (user.online === true) {
-                return (
-                  <div key={user.id} className="rightBody_users">
-                    <img src={user.img} alt={user.name}></img>
-                    <h5>{user.name}</h5>
-                  </div>
-                );
-              }
-            })}
-            <h4>OFFLINE-1</h4>
-
-            {users.map((user) => {
-              if (user.online === false) {
-                return (
-                  <div key={user.id} className="rightBody_users1">
-                    <img src={user.img} alt={user.name}></img>
-                    <h5>{user.name}</h5>
-                  </div>
-                );
-              }
-            })}
           </div>
         </div>
+      </div>
+      <div className="login1" ref={loading}>
+        <h1>{name.toUpperCase()}</h1>
+        <div className="cer"></div>
+        <div className="cer"></div>
+        <div className="cer"></div>
       </div>
     </div>
   );

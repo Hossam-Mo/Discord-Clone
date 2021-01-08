@@ -1,3 +1,55 @@
 .App {
+  display: none;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+
+.login1 {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
   display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
+.cer {
+  height: 0px;
+  width: 0px;
+  border-radius: 50%;
+  background-color: white;
+  transform: translate3d(0);
+  animation: loading 1s alternate infinite;
+  margin: 10px;
+}
+.cer:nth-child(2) {
+  background-color: rgb(131, 131, 131);
+  animation-delay: 0.4s;
+}
+.cer:nth-child(3) {
+  background-color: rgb(199, 199, 199);
+  animation-delay: 0.2s;
+}
+.log {
+  display: none;
+  opacity: 0;
+  transition: all 1s ease-in-out;
+}
+.login1 > h1 {
+  color: white;
+  font-family: "lobster", "Yellowtail";
+  font-weight: 400;
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  z-index: 10;
+}
+
+@keyframes loading {
+  to {
+    height: 16px;
+    width: 16px;
+    transform: translate3d(0, -16px, 0);
+  }
 }
