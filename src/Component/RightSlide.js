@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./rightSlide.css";
 import { GiThreeFriends } from "react-icons/gi";
 import { GoInbox } from "react-icons/go";

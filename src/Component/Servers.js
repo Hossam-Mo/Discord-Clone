@@ -25,17 +25,29 @@ export default function Servers({ socket }) {
   const user = useSelector((state) => state.user);
   const loading = useRef();
   const server = useRef();
+  const messageList = useRef();
 
   useEffect(() => {
-    setTimeout(() => {
-      loading.current.style.display = "none";
+    if (loading.current && server.current) {
+      if (loading.current.style.display === "none") {
+        loading.current.style.display = "flex";
+        server.current.style.display = "none";
+        server.current.style.opacity = 0;
+      }
 
-      server.current.style.display = "flex";
       setTimeout(() => {
-        server.current.style.opacity = 1;
-      }, 100);
-    }, 2000);
-  }, []);
+        if (loading.current) loading.current.style.display = "none";
+
+        setTimeout(() => {
+          if (server.current) server.current.style.opacity = 1;
+        }, 100);
+        if (server.current) {
+          server.current.style.display = "flex";
+          messageList.current.scrollTop = messageList.current.scrollHeight;
+        }
+      }, 1000);
+    }
+  }, [sid]);
 
   useEffect(() => {
     socket.emit("joinserver", sid.serverid);
@@ -126,9 +138,8 @@ export default function Servers({ socket }) {
       });
   }, []);
   useEffect(() => {
-    let list = document.getElementById("scrolling-div");
-    list.scrollTop = list.scrollHeight;
-  }, [messages]);
+    messageList.current.scrollTop = messageList.current.scrollHeight;
+  }, [messages, sid]);
 
   return (
     <div className="main_server">
@@ -200,7 +211,7 @@ export default function Servers({ socket }) {
           </div>
           <div className="right_body">
             <div className="body_left">
-              <div id="scrolling-div" className="left_up">
+              <div ref={messageList} id="scrolling-div" className="left_up">
                 <img
                   className="body_img"
                   src="https://discord.com/assets/b669713872b43ca42333264abf9c858e.svg"
@@ -265,7 +276,7 @@ export default function Servers({ socket }) {
         </div>
       </div>
       <div className="login1" ref={loading}>
-        <h1>{name.toUpperCase()}</h1>
+        <h1>Discord</h1>
         <div className="cer"></div>
         <div className="cer"></div>
         <div className="cer"></div>

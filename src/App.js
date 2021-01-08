@@ -16,15 +16,17 @@ function App() {
   const log = useRef();
   const main = useRef();
   useEffect(() => {
-    setTimeout(() => {
-      loading.current.style.opacity = 0;
-      loading.current.style.display = "none";
-
+    if (loading.current && log.current) {
       setTimeout(() => {
-        log.current.style.opacity = 1;
-      }, 200);
-      log.current.style.display = "block";
-    }, 3000);
+        loading.current.style.opacity = 0;
+        loading.current.style.display = "none";
+
+        setTimeout(() => {
+          log.current.style.opacity = 1;
+        }, 200);
+        log.current.style.display = "block";
+      }, 3000);
+    }
   }, []);
   useEffect(() => {
     if (main.current) {
@@ -33,8 +35,8 @@ function App() {
         main.current.style.display = "flex";
         setTimeout(() => {
           main.current.style.opacity = 1;
-        }, 100);
-      }, 50);
+        }, 50);
+      }, 25);
     }
   }, [user]);
 
